@@ -1,14 +1,29 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        return 'Username is {}'.format(request.values['username'])
-    else:
-        return '<form method="post" action="/login"><input type="text" name="username"><p><button type="submit">Submit</button></p></form>'
+	error = None
+	if request.method == 'POST':
+		if valid_login(request.form['username'], request.form['password']):
+			return "Welcome back, {}".format(request.form['username'])
+		else:
+			error = 'Incorrect username and password'
+	return render_template('login.html', error_var=error)
+
+def valid_login(username, password):
+	if username == password:
+		return True
+	else:
+		return False
+
+
+@app.route('/hello')
+@app.route('/hello/<name>')
+def hello(name=None):
+    return render_template('hello.html', name_var=name)  # variable 'name_var' is used in the html template
 
 
 if __name__ == '__main__':
