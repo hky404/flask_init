@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login</title>
+	<title>Algometica | Login</title>
 </head>
 <body>
 	{% if error_var %}
 		<p style="color:red">{{ error_var }}</p>
 	{% endif %}
+	<h1>Algometica</h1>
 	<form action="{{ url_for('login') }}" method="POST">
 		<p>	Username: <input type="text" name="username"></p>
 		<p>Password: <input type="password" name="password"></p>
