@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+	<title>Algometica | {% block title %}{% endblock %}</title>
+	{% endblock %}
+</head>
+<body>
+	<h1>Algometica</h1>
+
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul class="flashes">
+				{% for message in messages %}
+				<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	{% endwith %}
+
+	<div id="content">
+		{%block content%}{% endblock %}
+	</div>
+
+	<footer>
+		{% block footer %}
+		&copy; Copyright 2017 <a href="http://algometica.com">Algometica</a>
+		{% endblock %}
+	</footer>
+		
+</body>
+</html>
