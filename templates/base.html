@@ -6,7 +6,9 @@
 	{% endblock %}
 </head>
 <body>
-	<h1>Algometica</h1>
+	<div id="logo">
+		<img src="{{ url_for('static', filename='algometica_00_800x800.png') }}"" alt="Algometica" height="150px">
+	</div>
 
 	{% with messages = get_flashed_messages() %}
 		{% if messages %}
